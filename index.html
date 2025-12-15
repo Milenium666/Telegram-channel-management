@@ -7,7 +7,12 @@
     <title>Telegram-channel-management</title>
   </head>
   <body>
-    <div id="app"></div>
+    <main>
+      <form class="search-form__form" name="search" novalidate>
+        <input placeholder="Поиск по названию, телефону, ID..." class="search-form__input-channel" name="search" id="search" required type="text" autocomplete="off" >
+        <button class="search-form__button" id="searchButton" type="submit">+ Добавить канал</button>
+      </form>
+    </main>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
