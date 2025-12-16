@@ -1,5 +1,7 @@
 @import url('../src/vendor/normalize.css');
 
+@import url('../src/blocks/root/root.css');
+
 
 @import url('../src/blocks/search-form/search-form.css');
 

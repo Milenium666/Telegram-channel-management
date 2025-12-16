@@ -1,0 +1,10 @@
+:root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1em;
+  border: 1px solid greenyellow;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1em;
+  font-weight: 400;
+  font-size: 1em;
+}
