@@ -1,0 +1,50 @@
+.table {
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  border-radius: 0.5em;
+  margin-top: 2em;
+}
+.table__table {
+  width: 100%;
+  padding: 1em;
+}
+
+.table__head-containier {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+  padding: 0.75em;
+}
+
+.table__title {
+  padding: 0.75em;
+  color: rgba(8, 0, 0, 0.8);
+  line-height: 0.5em;
+  font-weight: 300;
+}
+
+.table__card {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+  padding: 1em;
+  align-items: flex-start;
+
+  
+}
+.table__card:last-child {
+  border-bottom: none;
+}
+.table__description {
+  color: rgba(8, 0, 0, 0.8);
+  line-height: 0.5em;
+  font-weight: 300;
+}
+.table_text{
+    margin: 0;
+    margin-bottom: 15px;
+}
+.table__img {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}

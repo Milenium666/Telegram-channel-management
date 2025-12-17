@@ -20,6 +20,8 @@
   padding: 1.25em;
   border: none;
   border-radius: 0.75em;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 @media screen and (max-width: 500px) {
