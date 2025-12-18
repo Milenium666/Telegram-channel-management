@@ -28,7 +28,12 @@
   .search-form__form {
     flex-direction: column;
   }
-  .search-form__button{
+  .search-form__button {
     width: 100%;
+  }
+}
+@media screen and (max-width: 320px) {
+  .search-form__input-channel {
+    text-overflow: ellipsis;
   }
 }
