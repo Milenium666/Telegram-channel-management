@@ -13,129 +13,107 @@
         <button class="search-form__button" id="searchButton" type="submit">+ Добавить канал</button>
       </form>
       <section class="table">
-        <table class="table__table">
-          <thead class="table__head">
-            <tr class="table__head-containier">
-              <th class="table__title">Название</th>
-              <th class="table__title">Воронка и этап</th>
-              <th class="table__title">Данные аккаунта</th>
-              <th class="table__title">Статус</th>
-              <th class="table__title">Действие</th>
+        <div class="table__container">
+          <div class="table__wrapper">
+            <table class="table__desktop">
+              <thead class="table__head">
+                <tr>
+                  <th class="table__title">Название</th>
+                  <th class="table__title">Воронка и этап</th>
+                  <th class="table__title">Данные аккаунта</th>
+                  <th class="table__title">Статус</th>
+                  <th class="table__title">Действие</th>
+                </tr>
+              </thead>
+              <tbody class="table__body">
+            <tr class="table__row" data-id="1">
+              <td class="table__cell" data-label="Название">
+                <span class="table__cell-content">Канал 268</span>
+              </td>
+              <td class="table__cell" data-label="Воронка и этап">
+                <span class="table__cell-content">
+                  <span class="table__text">Воронка</span>
+                  <span class="table__text">Неразобранное</span>
+                </span>
+              </td>
+              <td class="table__cell" data-label="Данные аккаунта">
+                <span class="table__cell-content">
+                  <span class="table__text">ID:</span>
+                  <span class="table__text">Профиль</span>
+                  <span class="table__text">4234234324</span>
+                </span>
+              </td>
+              <td class="table__cell" data-label="Статус">
+                <span class="table__cell-content">Авторизуйтесь</span>
+              </td>
+              <td class="table__cell" data-label="Действие">
+                <span class="table__cell-content">
+                  <button class="table__action-btn" type="button" aria-label="Действия">
+                    <img class="table__img" src="./src/images/menu-dots-vertical.svg" alt="иконка три точки">
+                  </button>
+                </span>
+              </td>
             </tr>
-          </thead>
-          <tbody class="table__body">
-            <tr class="table__card" id="1">
-              <td class="table__description">Канал 268</td>
-              <td class="table__description"> <p class="table_text">Воронка</p>
-                <p class="table_text">Неразобранное</p> 
+            <tr class="table__row" data-id="2">
+              <td class="table__cell" data-label="Название">
+                <span class="table__cell-content">Канал 270</span>
               </td>
-              <td class="table__description"><p class="table_text">ID:</p>
-                <p class="table_text">Профиль</p>
-                <p class="table_text">4234234324</p>
+              <td class="table__cell" data-label="Воронка и этап">
+                <span class="table__cell-content">
+                  <span class="table__text">Воронка</span>
+                  <span class="table__text">Неразобранное</span>
+                </span>
               </td>
-              <td class="table__description">Авторизуйтесь</td>
-              <td class="table__description"><img class="table__img" src="./src/images/menu-dots-vertical.svg" alt="иконка три точки"></td>
+              <td class="table__cell" data-label="Данные аккаунта">
+                <span class="table__cell-content">
+                  <span class="table__text">ID:</span>
+                  <span class="table__text">Профиль</span>
+                  <span class="table__text">8923473244</span>
+                </span>
+              </td>
+              <td class="table__cell" data-label="Статус">
+                <span class="table__cell-content">Авторизуйтесь</span>
+              </td>
+              <td class="table__cell" data-label="Действие">
+                <span class="table__cell-content">
+                  <button class="table__action-btn" type="button" aria-label="Действия">
+                    <img class="table__img" src="./src/images/menu-dots-vertical.svg" alt="иконка три точки">
+                  </button>
+                </span>
+              </td>
             </tr>
-             <!-- <tr class="table__card" id="2">
-              <td class="table__description">Канал 270</td>
-              <td class="table__description"> <p class="table_text">Воронка</p>
-                <p class="table_text">Неразобранное</p> 
+            <tr class="table__row" data-id="3">
+              <td class="table__cell" data-label="Название">
+                <span class="table__cell-content">Канал 278</span>
               </td>
-              <td class="table__description"><p class="table_text">ID:</p>
-                <p class="table_text">Профиль</p>
-                <p class="table_text">8923473244</p>
+              <td class="table__cell" data-label="Воронка и этап">
+                <span class="table__cell-content">
+                  <span class="table__text">Воронка</span>
+                  <span class="table__text">Неразобранное</span>
+                </span>
               </td>
-              <td class="table__description">Авторизуйтесь</td>
-              <td class="table__description"><img class="table__img" src="./src/images/menu-dots-vertical.svg" alt="иконка три точки"></td>
+              <td class="table__cell" data-label="Данные аккаунта">
+                <span class="table__cell-content">
+                  <span class="table__text">ID:</span>
+                  <span class="table__text">Профиль</span>
+                  <span class="table__text">54364564564</span>
+                </span>
+              </td>
+              <td class="table__cell" data-label="Статус">
+                <span class="table__cell-content">Авторизуйтесь</span>
+              </td>
+              <td class="table__cell" data-label="Действие">
+                <span class="table__cell-content">
+                  <button class="table__action-btn" type="button" aria-label="Действия">
+                    <img class="table__img" src="./src/images/menu-dots-vertical.svg" alt="иконка три точки">
+                  </button>
+                </span>
+              </td>
             </tr>
-            <tr class="table__card" id="3">
-              <td class="table__description">Канал 278</td>
-              <td class="table__description"> <p class="table_text">Воронка</p>
-                <p class="table_text">Неразобранное</p> 
-              </td>
-              <td class="table__description"><p class="table_text">ID:</p>
-                <p class="table_text">Профиль</p>
-                <p class="table_text">54364564564</p>
-              </td>
-              <td class="table__description">Авторизуйтесь</td>
-              <td class="table__description"><img class="table__img" src="./src/images/menu-dots-vertical.svg" alt="иконка три точки"></td>
-            </tr>
-            <tr class="table__card" id="4">
-              <td class="table__description">Канал 279</td>
-              <td class="table__description"> <p class="table_text">Воронка</p>
-                <p class="table_text">Неразобранное</p> 
-              </td>
-              <td class="table__description"><p class="table_text">ID:</p>
-                <p class="table_text">Профиль</p>
-                <p class="table_text">2142341234</p>
-              </td>
-              <td class="table__description">Авторизуйтесь</td>
-              <td class="table__description"><img class="table__img" src="./src/images/menu-dots-vertical.svg" alt="иконка три точки"></td>
-            </tr>
-            <tr class="table__card" id="5">
-              <td class="table__description">Канал 280</td>
-              <td class="table__description"> <p class="table_text">Воронка</p>
-                <p class="table_text">Неразобранное</p> 
-              </td>
-              <td class="table__description"><p class="table_text">ID:</p>
-                <p class="table_text">Профиль</p>
-                <p class="table_text">12342134234</p>
-              </td>
-              <td class="table__description">Авторизуйтесь</td>
-              <td class="table__description"><img class="table__img" src="./src/images/menu-dots-vertical.svg" alt="иконка три точки"></td>
-            </tr>
-            <tr class="table__card" id="6">
-              <td class="table__description">Канал 281</td>
-              <td class="table__description"> <p class="table_text">Воронка</p>
-                <p class="table_text">Неразобранное</p> 
-              </td>
-              <td class="table__description"><p class="table_text">ID:</p>
-                <p class="table_text">Профиль</p>
-                <p class="table_text">854895444</p>
-              </td>
-              <td class="table__description">Авторизуйтесь</td>
-              <td class="table__description"><img class="table__img" src="./src/images/menu-dots-vertical.svg" alt="иконка три точки"></td>
-            </tr>
-            <tr class="table__card" id="7">
-              <td class="table__description">Канал 282</td>
-              <td class="table__description"> <p class="table_text">Воронка</p>
-                <p class="table_text">Неразобранное</p> 
-              </td>
-              <td class="table__description"><p class="table_text">ID:</p>
-                <p class="table_text">Профиль</p>
-                <p class="table_text">8548954445</p>
-              </td>
-              <td class="table__description">Авторизуйтесь</td>
-              <td class="table__description"><img class="table__img" src="./src/images/menu-dots-vertical.svg" alt="иконка три точки"></td>
-            </tr>
-            <tr class="table__card" id="8">
-              <td class="table__description">Канал 288</td>
-              <td class="table__description"> <p class="table_text">Воронка</p>
-                <p class="table_text">Неразобранное</p> 
-              </td>
-              <td class="table__description"><p class="table_text">ID:</p>
-                <p class="table_text">Профиль</p>
-                <p class="table_text">5345345</p>
-              </td>
-              <td class="table__description">Авторизуйтесь</td>
-              <td class="table__description"><img class="table__img" src="./src/images/menu-dots-vertical.svg" alt="иконка три точки"></td>
-            </tr>
-            <tr class="table__card" id="9">
-              <td class="table__description">Канал 289</td>
-              <td class="table__description"> <p class="table_text">Воронка</p>
-                <p class="table_text">Неразобранное</p> 
-              </td>
-              <td class="table__description"><p class="table_text">ID:</p>
-                <p class="table_text">Профиль</p>
-                <p class="table_text">79613470440</p>
-              </td>
-              <td class="table__description">Авторизуйтесь</td>
-              <td class="table__description"><img class="table__img" src="./src/images/menu-dots-vertical.svg" alt="иконка три точки"></td>
-            </tr> -->
-
           </tbody>
-        </table>
-
+            </table>
+          </div>
+        </div>
       </section>
     </main>
     <script type="module" src="/src/main.js"></script>
