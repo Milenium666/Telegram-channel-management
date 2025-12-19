@@ -415,3 +415,249 @@
     font-size: 0.875em;
   }
 }
+
+.qr-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.qr-modal[aria-hidden="false"] {
+  display: flex;
+  pointer-events: all;
+}
+
+.qr-modal__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.qr-modal__content {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 2001;
+  animation: qrModalFadeIn 0.3s ease-out;
+  border: 2px dashed rgba(128, 128, 128, 0.3);
+}
+
+@keyframes qrModalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.qr-modal__close {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background: rgba(0, 0, 0, 0.05);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  z-index: 10;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.qr-modal__close:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.qr-modal__header {
+  padding: 1.5em 1.5em 1em;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.qr-modal__title {
+  margin: 0;
+  font-size: 1.25em;
+  font-weight: 600;
+  color: var(--table-text-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.qr-modal__status {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 0.875em;
+  color: var(--table-text-color);
+}
+
+.qr-modal__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6c86e2;
+  display: inline-block;
+}
+
+.qr-modal__body {
+  padding: 1.5em;
+  display: flex;
+  gap: 2em;
+  align-items: flex-start;
+}
+
+.qr-modal__qr-container {
+  flex-shrink: 0;
+}
+
+.qr-modal__qr-code {
+  width: 200px;
+  height: 200px;
+  border: 2px dashed rgba(128, 128, 128, 0.3);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+.qr-modal__qr-image {
+  width: 100%;
+  height: 100%;
+  max-width: 200px;
+  max-height: 200px;
+  display: block;
+  object-fit: contain;
+}
+
+.qr-modal__instructions {
+  flex: 1;
+}
+
+.qr-modal__steps {
+  margin: 0;
+  padding-left: 1.5em;
+  list-style: decimal;
+  color: var(--table-text-color);
+}
+
+.qr-modal__step {
+  margin-bottom: 0.75em;
+  line-height: 1.5;
+  font-size: 0.9375em;
+}
+
+  .qr-modal__step:last-child {
+    margin-bottom: 0;
+  }
+
+  .qr-modal__footer {
+    padding: 1em 1.5em 1.5em;
+    border-top: 1px solid rgba(128, 128, 128, 0.2);
+    display: flex;
+    justify-content: center;
+  }
+
+  .qr-modal__add-btn {
+    background-color: #6c86e2;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75em 2em;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    font-family: inherit;
+  }
+
+  .qr-modal__add-btn:hover {
+    background-color: #5a75d0;
+    transform: translateY(-1px);
+  }
+
+  .qr-modal__add-btn:active {
+    transform: translateY(0);
+  }
+
+@media screen and (max-width: 600px) {
+  .qr-modal__content {
+    width: 95%;
+    max-width: none;
+    border-radius: 12px;
+  }
+
+  .qr-modal__header {
+    padding: 1em;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .qr-modal__body {
+    flex-direction: column;
+    padding: 1em;
+    gap: 1.5em;
+  }
+
+  .qr-modal__qr-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .qr-modal__qr-code {
+    width: 180px;
+    height: 180px;
+  }
+
+  .qr-modal__instructions {
+    width: 100%;
+  }
+
+  .qr-modal__close {
+    top: 0.75em;
+    right: 0.75em;
+    width: 32px;
+    height: 32px;
+  }
+
+  .qr-modal__footer {
+    padding: 1em;
+  }
+
+  .qr-modal__add-btn {
+    width: 100%;
+    padding: 1em;
+  }
+}
