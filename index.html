@@ -48,7 +48,7 @@
               </td>
               <td class="table__cell" data-label="Действие">
                 <span class="table__cell-content">
-                  <button class="table__action-btn" type="button" aria-label="Действия">
+                  <button class="table__action-btn" type="button" aria-label="Действия" data-row-id="1">
                     <img class="table__img" src="./src/images/menu-dots-vertical.svg" alt="иконка три точки">
                   </button>
                 </span>
@@ -76,7 +76,7 @@
               </td>
               <td class="table__cell" data-label="Действие">
                 <span class="table__cell-content">
-                  <button class="table__action-btn" type="button" aria-label="Действия">
+                  <button class="table__action-btn" type="button" aria-label="Действия" data-row-id="2">
                     <img class="table__img" src="./src/images/menu-dots-vertical.svg" alt="иконка три точки">
                   </button>
                 </span>
@@ -104,7 +104,7 @@
               </td>
               <td class="table__cell" data-label="Действие">
                 <span class="table__cell-content">
-                  <button class="table__action-btn" type="button" aria-label="Действия">
+                  <button class="table__action-btn" type="button" aria-label="Действия" data-row-id="3">
                     <img class="table__img" src="./src/images/menu-dots-vertical.svg" alt="иконка три точки">
                   </button>
                 </span>
@@ -116,6 +116,19 @@
         </div>
       </section>
     </main>
+    
+    <div class="action-modal" id="actionModal" role="dialog" aria-label="Меню действий" aria-hidden="true">
+      <div class="action-modal__overlay"></div>
+      <div class="action-modal__menu">
+        <button class="action-modal__item action-modal__item--settings" type="button">
+          Настройки
+        </button>
+        <button class="action-modal__item action-modal__item--delete" type="button">
+          Удалить сессию
+        </button>
+      </div>
+    </div>
+    
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
