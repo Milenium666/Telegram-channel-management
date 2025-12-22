@@ -23,24 +23,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const STORAGE_KEY_CHANNELS = 'telegram_channels';
   const STORAGE_KEY_COUNTER = 'telegram_channel_counter';
 
-  // Функции для работы с localStorage
   function saveChannels() {
     if (!tableBody) return;
-    
+
     const channels = [];
     const rows = tableBody.querySelectorAll('.table__row');
-    
+
     rows.forEach(row => {
       const channelId = row.getAttribute('data-id');
       const nameCell = row.querySelector('[data-label="Название"] .table__cell-content');
       const accountCell = row.querySelector('[data-label="Данные аккаунта"] .table__cell-content');
-      
+
       if (nameCell && accountCell) {
         const channelName = nameCell.textContent.trim();
         const channelNumber = channelName.replace('Канал ', '');
         const accountTexts = accountCell.querySelectorAll('.table__text');
         const randomId = accountTexts.length > 2 ? accountTexts[2].textContent.trim() : '';
-        
+
         channels.push({
           id: channelId,
           channelNumber: channelNumber,
@@ -48,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
     });
-    
+
     localStorage.setItem(STORAGE_KEY_CHANNELS, JSON.stringify(channels));
     localStorage.setItem(STORAGE_KEY_COUNTER, channelCounter.toString());
   }
@@ -56,22 +55,20 @@ document.addEventListener('DOMContentLoaded', () => {
   function loadChannels() {
     const savedChannels = localStorage.getItem(STORAGE_KEY_CHANNELS);
     const savedCounter = localStorage.getItem(STORAGE_KEY_COUNTER);
-    
+
     if (savedCounter) {
       const parsedCounter = parseInt(savedCounter, 10);
       if (!isNaN(parsedCounter)) {
         channelCounter = parsedCounter;
       }
     }
-    
+
     if (savedChannels && tableBody) {
       try {
         const channels = JSON.parse(savedChannels);
-        
-        // Очищаем таблицу
+
         tableBody.innerHTML = '';
-        
-        // Восстанавливаем каналы (обработчики событий добавляются в createTableRow)
+
         if (Array.isArray(channels)) {
           channels.forEach(channel => {
             const row = createTableRow(channel.id, channel.channelNumber, channel.randomId);
@@ -80,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       } catch (e) {
         console.error('Ошибка при загрузке данных из localStorage:', e);
-        // Если данные повреждены, очищаем localStorage и используем данные из HTML
         localStorage.removeItem(STORAGE_KEY_CHANNELS);
         localStorage.removeItem(STORAGE_KEY_COUNTER);
         extractChannelsFromHTML();
@@ -90,27 +86,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function extractChannelsFromHTML() {
     if (!tableBody) return;
-    
+
     const channels = [];
     const rows = tableBody.querySelectorAll('.table__row');
     let maxId = 0;
-    
+
     rows.forEach(row => {
       const channelId = row.getAttribute('data-id');
       const nameCell = row.querySelector('[data-label="Название"] .table__cell-content');
       const accountCell = row.querySelector('[data-label="Данные аккаунта"] .table__cell-content');
-      
+
       if (nameCell && accountCell) {
         const channelName = nameCell.textContent.trim();
         const channelNumber = channelName.replace('Канал ', '');
         const accountTexts = accountCell.querySelectorAll('.table__text');
         const randomId = accountTexts.length > 2 ? accountTexts[2].textContent.trim() : '';
-        
+
         const id = parseInt(channelId, 10);
         if (id > maxId) {
           maxId = id;
         }
-        
+
         channels.push({
           id: channelId,
           channelNumber: channelNumber,
@@ -118,9 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
     });
-    
+
     if (channels.length > 0) {
-      // Устанавливаем channelCounter на максимальный ID из существующих каналов
       channelCounter = maxId;
       localStorage.setItem(STORAGE_KEY_CHANNELS, JSON.stringify(channels));
       localStorage.setItem(STORAGE_KEY_COUNTER, channelCounter.toString());
@@ -133,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
       button.addEventListener('click', (e) => {
         e.stopPropagation();
         const rowId = button.getAttribute('data-row-id');
-        
+
         if (actionModal.getAttribute('aria-hidden') === 'false' && currentRowId === rowId) {
           closeActionModal();
         } else {
@@ -155,12 +150,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openQRModal() {
     if (!qrModal) return;
-    
+
     currentChannelNumber = generateChannelNumber();
     if (qrChannelNumber) {
       qrChannelNumber.textContent = currentChannelNumber;
     }
-    
+
     qrModal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
   }
@@ -214,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
       actionBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         const rowId = actionBtn.getAttribute('data-row-id');
-        
+
         if (actionModal.getAttribute('aria-hidden') === 'false' && currentRowId === rowId) {
           closeActionModal();
         } else {
@@ -228,12 +223,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function addChannel(channelNumber) {
     if (!tableBody) return;
-    
+
     const channelId = generateChannelId();
     const newRow = createTableRow(channelId, channelNumber);
     tableBody.appendChild(newRow);
-    
-    saveChannels(); // Сохраняем обновленный список каналов
+
+    saveChannels();
     closeQRModal();
   }
 
@@ -241,40 +236,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const row = document.querySelector(`.table__row[data-id="${rowId}"]`);
     if (row) {
       row.remove();
-      saveChannels(); // Сохраняем обновленный список каналов
+      saveChannels();
     }
   }
 
   function openActionModal(button, rowId) {
     if (!actionModal) return;
-    
+
     currentRowId = rowId;
     actionModal.setAttribute('aria-hidden', 'false');
-    
+
     const rect = button.getBoundingClientRect();
     const menuRect = modalMenu.getBoundingClientRect();
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
-    
+
     let top = rect.bottom + 8;
     let left = rect.left;
-    
+
     if (left + menuRect.width > viewportWidth) {
       left = viewportWidth - menuRect.width - 16;
     }
-    
+
     if (top + menuRect.height > viewportHeight) {
       top = rect.top - menuRect.height - 8;
     }
-    
+
     if (left < 16) {
       left = 16;
     }
-    
+
     if (top < 16) {
       top = 16;
     }
-    
+
     modalMenu.style.position = 'fixed';
     modalMenu.style.top = `${top}px`;
     modalMenu.style.left = `${left}px`;
@@ -301,12 +296,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Инициализируем обработчики для существующих кнопок (до загрузки данных)
   actionButtons.forEach(button => {
     button.addEventListener('click', (e) => {
       e.stopPropagation();
       const rowId = button.getAttribute('data-row-id');
-      
+
       if (actionModal.getAttribute('aria-hidden') === 'false' && currentRowId === rowId) {
         closeActionModal();
       } else {
@@ -373,12 +367,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Загружаем данные при старте приложения (после всех определений функций)
   const savedChannels = localStorage.getItem(STORAGE_KEY_CHANNELS);
   if (savedChannels) {
     loadChannels();
   } else {
-    // Если данных нет, извлекаем из HTML и сохраняем (первый запуск)
     extractChannelsFromHTML();
   }
 

@@ -9,8 +9,18 @@
   <body>
     <main>
       <form class="search-form__form" name="search" novalidate>
-        <input placeholder="Поиск по названию, телефону, ID..." class="search-form__input-channel" name="search" id="search" required type="text" autocomplete="off" >
-        <button class="search-form__button" id="searchButton" type="submit">+ Добавить канал</button>
+        <input
+          placeholder="Поиск по названию, телефону, ID..."
+          class="search-form__input-channel"
+          name="search"
+          id="search"
+          required
+          type="text"
+          autocomplete="off"
+        />
+        <button class="search-form__button" id="searchButton" type="submit">
+          + Добавить канал
+        </button>
       </form>
       <section class="table">
         <div class="table__container">
@@ -26,114 +36,161 @@
                 </tr>
               </thead>
               <tbody class="table__body">
-            <tr class="table__row" data-id="1">
-              <td class="table__cell" data-label="Название">
-                <span class="table__cell-content">Канал 268</span>
-              </td>
-              <td class="table__cell" data-label="Воронка и этап">
-                <span class="table__cell-content">
-                  <span class="table__text">Воронка</span>
-                  <span class="table__text">Неразобранное</span>
-                </span>
-              </td>
-              <td class="table__cell" data-label="Данные аккаунта">
-                <span class="table__cell-content">
-                  <span class="table__text">ID:</span>
-                  <span class="table__text">Профиль</span>
-                  <span class="table__text">4234234324</span>
-                </span>
-              </td>
-              <td class="table__cell" data-label="Статус">
-                <span class="table__cell-content">Авторизуйтесь</span>
-              </td>
-              <td class="table__cell" data-label="Действие">
-                <span class="table__cell-content">
-                  <button class="table__action-btn" type="button" aria-label="Действия" data-row-id="1">
-                    <img class="table__img" src="./src/images/menu-dots-vertical.svg" alt="иконка три точки">
-                  </button>
-                </span>
-              </td>
-            </tr>
-            <tr class="table__row" data-id="2">
-              <td class="table__cell" data-label="Название">
-                <span class="table__cell-content">Канал 270</span>
-              </td>
-              <td class="table__cell" data-label="Воронка и этап">
-                <span class="table__cell-content">
-                  <span class="table__text">Воронка</span>
-                  <span class="table__text">Неразобранное</span>
-                </span>
-              </td>
-              <td class="table__cell" data-label="Данные аккаунта">
-                <span class="table__cell-content">
-                  <span class="table__text">ID:</span>
-                  <span class="table__text">Профиль</span>
-                  <span class="table__text">8923473244</span>
-                </span>
-              </td>
-              <td class="table__cell" data-label="Статус">
-                <span class="table__cell-content">Авторизуйтесь</span>
-              </td>
-              <td class="table__cell" data-label="Действие">
-                <span class="table__cell-content">
-                  <button class="table__action-btn" type="button" aria-label="Действия" data-row-id="2">
-                    <img class="table__img" src="./src/images/menu-dots-vertical.svg" alt="иконка три точки">
-                  </button>
-                </span>
-              </td>
-            </tr>
-            <tr class="table__row" data-id="3">
-              <td class="table__cell" data-label="Название">
-                <span class="table__cell-content">Канал 278</span>
-              </td>
-              <td class="table__cell" data-label="Воронка и этап">
-                <span class="table__cell-content">
-                  <span class="table__text">Воронка</span>
-                  <span class="table__text">Неразобранное</span>
-                </span>
-              </td>
-              <td class="table__cell" data-label="Данные аккаунта">
-                <span class="table__cell-content">
-                  <span class="table__text">ID:</span>
-                  <span class="table__text">Профиль</span>
-                  <span class="table__text">54364564564</span>
-                </span>
-              </td>
-              <td class="table__cell" data-label="Статус">
-                <span class="table__cell-content">Авторизуйтесь</span>
-              </td>
-              <td class="table__cell" data-label="Действие">
-                <span class="table__cell-content">
-                  <button class="table__action-btn" type="button" aria-label="Действия" data-row-id="3">
-                    <img class="table__img" src="./src/images/menu-dots-vertical.svg" alt="иконка три точки">
-                  </button>
-                </span>
-              </td>
-            </tr>
-          </tbody>
+                <tr class="table__row" data-id="1">
+                  <td class="table__cell" data-label="Название">
+                    <span class="table__cell-content">Канал 268</span>
+                  </td>
+                  <td class="table__cell" data-label="Воронка и этап">
+                    <span class="table__cell-content">
+                      <span class="table__text">Воронка</span>
+                      <span class="table__text">Неразобранное</span>
+                    </span>
+                  </td>
+                  <td class="table__cell" data-label="Данные аккаунта">
+                    <span class="table__cell-content">
+                      <span class="table__text">ID:</span>
+                      <span class="table__text">Профиль</span>
+                      <span class="table__text">4234234324</span>
+                    </span>
+                  </td>
+                  <td class="table__cell" data-label="Статус">
+                    <span class="table__cell-content">Авторизуйтесь</span>
+                  </td>
+                  <td class="table__cell" data-label="Действие">
+                    <span class="table__cell-content">
+                      <button
+                        class="table__action-btn"
+                        type="button"
+                        aria-label="Действия"
+                        data-row-id="1"
+                      >
+                        <img
+                          class="table__img"
+                          src="./src/images/menu-dots-vertical.svg"
+                          alt="иконка три точки"
+                        />
+                      </button>
+                    </span>
+                  </td>
+                </tr>
+                <tr class="table__row" data-id="2">
+                  <td class="table__cell" data-label="Название">
+                    <span class="table__cell-content">Канал 270</span>
+                  </td>
+                  <td class="table__cell" data-label="Воронка и этап">
+                    <span class="table__cell-content">
+                      <span class="table__text">Воронка</span>
+                      <span class="table__text">Неразобранное</span>
+                    </span>
+                  </td>
+                  <td class="table__cell" data-label="Данные аккаунта">
+                    <span class="table__cell-content">
+                      <span class="table__text">ID:</span>
+                      <span class="table__text">Профиль</span>
+                      <span class="table__text">8923473244</span>
+                    </span>
+                  </td>
+                  <td class="table__cell" data-label="Статус">
+                    <span class="table__cell-content">Авторизуйтесь</span>
+                  </td>
+                  <td class="table__cell" data-label="Действие">
+                    <span class="table__cell-content">
+                      <button
+                        class="table__action-btn"
+                        type="button"
+                        aria-label="Действия"
+                        data-row-id="2"
+                      >
+                        <img
+                          class="table__img"
+                          src="./src/images/menu-dots-vertical.svg"
+                          alt="иконка три точки"
+                        />
+                      </button>
+                    </span>
+                  </td>
+                </tr>
+                <tr class="table__row" data-id="3">
+                  <td class="table__cell" data-label="Название">
+                    <span class="table__cell-content">Канал 278</span>
+                  </td>
+                  <td class="table__cell" data-label="Воронка и этап">
+                    <span class="table__cell-content">
+                      <span class="table__text">Воронка</span>
+                      <span class="table__text">Неразобранное</span>
+                    </span>
+                  </td>
+                  <td class="table__cell" data-label="Данные аккаунта">
+                    <span class="table__cell-content">
+                      <span class="table__text">ID:</span>
+                      <span class="table__text">Профиль</span>
+                      <span class="table__text">54364564564</span>
+                    </span>
+                  </td>
+                  <td class="table__cell" data-label="Статус">
+                    <span class="table__cell-content">Авторизуйтесь</span>
+                  </td>
+                  <td class="table__cell" data-label="Действие">
+                    <span class="table__cell-content">
+                      <button
+                        class="table__action-btn"
+                        type="button"
+                        aria-label="Действия"
+                        data-row-id="3"
+                      >
+                        <img
+                          class="table__img"
+                          src="./src/images/menu-dots-vertical.svg"
+                          alt="иконка три точки"
+                        />
+                      </button>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
       </section>
     </main>
-    
-    <div class="action-modal" id="actionModal" role="dialog" aria-label="Меню действий" aria-hidden="true">
+
+    <div
+      class="action-modal"
+      id="actionModal"
+      role="dialog"
+      aria-label="Меню действий"
+      aria-hidden="true"
+    >
       <div class="action-modal__overlay"></div>
       <div class="action-modal__menu">
-        <button class="action-modal__item action-modal__item--settings" type="button">
+        <button
+          class="action-modal__item action-modal__item--settings"
+          type="button"
+        >
           Настройки
         </button>
-        <button class="action-modal__item action-modal__item--delete" type="button">
+        <button
+          class="action-modal__item action-modal__item--delete"
+          type="button"
+        >
           Удалить сессию
         </button>
       </div>
     </div>
 
-    <div class="qr-modal" id="qrModal" role="dialog" aria-label="Добавление канала" aria-hidden="true">
+    <div
+      class="qr-modal"
+      id="qrModal"
+      role="dialog"
+      aria-label="Добавление канала"
+      aria-hidden="true"
+    >
       <div class="qr-modal__overlay"></div>
       <div class="qr-modal__content">
         <div class="qr-modal__header">
-          <h2 class="qr-modal__title">Канал №<span id="qrChannelNumber">150511</span></h2>
+          <h2 class="qr-modal__title">
+            Канал №<span id="qrChannelNumber">150511</span>
+          </h2>
           <div class="qr-modal__status">
             <span class="qr-modal__status-dot"></span>
             <span class="qr-modal__status-text">Статус: отсканируйте QR</span>
@@ -142,7 +199,12 @@
         <div class="qr-modal__body">
           <div class="qr-modal__qr-container">
             <div class="qr-modal__qr-code" id="qrCode">
-              <img src="./src/images/qr-code.png" alt="QR код для авторизации" class="qr-modal__qr-image" id="qrImage">
+              <img
+                src="./src/images/qr.png"
+                alt="QR код для авторизации"
+                class="qr-modal__qr-image"
+                id="qrImage"
+              />
             </div>
           </div>
           <div class="qr-modal__instructions">
@@ -160,13 +222,24 @@
           </button>
         </div>
         <button class="qr-modal__close" type="button" aria-label="Закрыть">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18 6L6 18M6 6L18 18"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
           </svg>
         </button>
       </div>
     </div>
-    
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

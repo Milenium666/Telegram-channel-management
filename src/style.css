@@ -1,8 +1,11 @@
-@import url('../src/vendor/normalize.css');
+@import url("../src/vendor/normalize.css");
 
-@import url('../src/blocks/root/root.css');
+@import url("../src/blocks/root/root.css");
 
-@import url('../src/blocks/table/table.css');
+@import url("../src/blocks/table/table.css");
 
-@import url('../src/blocks/search-form/search-form.css');
+@import url("../src/blocks/action-modal/action-modal.css");
 
+@import url("../src/blocks/qr-modal/qr-modal.css");
+
+@import url("../src/blocks/search-form/search-form.css");
