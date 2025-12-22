@@ -1,5 +1,4 @@
 import './style.css';
-
 document.addEventListener('DOMContentLoaded', () => {
   const searchForm = document.querySelector('.search-form__form');
   const searchButton = document.getElementById('searchButton');
@@ -313,17 +312,19 @@ document.addEventListener('DOMContentLoaded', () => {
     currentRowId = null;
   }
 
-  if (searchForm) {
-    searchForm.addEventListener('submit', (e) => {
+  if (searchButton) {
+    searchButton.addEventListener('click', (e) => {
       e.preventDefault();
       openQRModal();
     });
   }
 
-  if (searchButton) {
-    searchButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      openQRModal();
+  const searchInput = document.getElementById('search');
+  if (searchInput) {
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+      }
     });
   }
 
