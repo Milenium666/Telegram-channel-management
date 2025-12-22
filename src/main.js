@@ -20,13 +20,136 @@ document.addEventListener('DOMContentLoaded', () => {
   let channelCounter = 3;
   let currentChannelNumber = null;
 
+  const STORAGE_KEY_CHANNELS = 'telegram_channels';
+  const STORAGE_KEY_COUNTER = 'telegram_channel_counter';
+
+  // Функции для работы с localStorage
+  function saveChannels() {
+    if (!tableBody) return;
+    
+    const channels = [];
+    const rows = tableBody.querySelectorAll('.table__row');
+    
+    rows.forEach(row => {
+      const channelId = row.getAttribute('data-id');
+      const nameCell = row.querySelector('[data-label="Название"] .table__cell-content');
+      const accountCell = row.querySelector('[data-label="Данные аккаунта"] .table__cell-content');
+      
+      if (nameCell && accountCell) {
+        const channelName = nameCell.textContent.trim();
+        const channelNumber = channelName.replace('Канал ', '');
+        const accountTexts = accountCell.querySelectorAll('.table__text');
+        const randomId = accountTexts.length > 2 ? accountTexts[2].textContent.trim() : '';
+        
+        channels.push({
+          id: channelId,
+          channelNumber: channelNumber,
+          randomId: randomId
+        });
+      }
+    });
+    
+    localStorage.setItem(STORAGE_KEY_CHANNELS, JSON.stringify(channels));
+    localStorage.setItem(STORAGE_KEY_COUNTER, channelCounter.toString());
+  }
+
+  function loadChannels() {
+    const savedChannels = localStorage.getItem(STORAGE_KEY_CHANNELS);
+    const savedCounter = localStorage.getItem(STORAGE_KEY_COUNTER);
+    
+    if (savedCounter) {
+      const parsedCounter = parseInt(savedCounter, 10);
+      if (!isNaN(parsedCounter)) {
+        channelCounter = parsedCounter;
+      }
+    }
+    
+    if (savedChannels && tableBody) {
+      try {
+        const channels = JSON.parse(savedChannels);
+        
+        // Очищаем таблицу
+        tableBody.innerHTML = '';
+        
+        // Восстанавливаем каналы (обработчики событий добавляются в createTableRow)
+        if (Array.isArray(channels)) {
+          channels.forEach(channel => {
+            const row = createTableRow(channel.id, channel.channelNumber, channel.randomId);
+            tableBody.appendChild(row);
+          });
+        }
+      } catch (e) {
+        console.error('Ошибка при загрузке данных из localStorage:', e);
+        // Если данные повреждены, очищаем localStorage и используем данные из HTML
+        localStorage.removeItem(STORAGE_KEY_CHANNELS);
+        localStorage.removeItem(STORAGE_KEY_COUNTER);
+        extractChannelsFromHTML();
+      }
+    }
+  }
+
+  function extractChannelsFromHTML() {
+    if (!tableBody) return;
+    
+    const channels = [];
+    const rows = tableBody.querySelectorAll('.table__row');
+    let maxId = 0;
+    
+    rows.forEach(row => {
+      const channelId = row.getAttribute('data-id');
+      const nameCell = row.querySelector('[data-label="Название"] .table__cell-content');
+      const accountCell = row.querySelector('[data-label="Данные аккаунта"] .table__cell-content');
+      
+      if (nameCell && accountCell) {
+        const channelName = nameCell.textContent.trim();
+        const channelNumber = channelName.replace('Канал ', '');
+        const accountTexts = accountCell.querySelectorAll('.table__text');
+        const randomId = accountTexts.length > 2 ? accountTexts[2].textContent.trim() : '';
+        
+        const id = parseInt(channelId, 10);
+        if (id > maxId) {
+          maxId = id;
+        }
+        
+        channels.push({
+          id: channelId,
+          channelNumber: channelNumber,
+          randomId: randomId
+        });
+      }
+    });
+    
+    if (channels.length > 0) {
+      // Устанавливаем channelCounter на максимальный ID из существующих каналов
+      channelCounter = maxId;
+      localStorage.setItem(STORAGE_KEY_CHANNELS, JSON.stringify(channels));
+      localStorage.setItem(STORAGE_KEY_COUNTER, channelCounter.toString());
+    }
+  }
+
+  function updateActionButtons() {
+    const buttons = tableBody.querySelectorAll('.table__action-btn');
+    buttons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const rowId = button.getAttribute('data-row-id');
+        
+        if (actionModal.getAttribute('aria-hidden') === 'false' && currentRowId === rowId) {
+          closeActionModal();
+        } else {
+          openActionModal(button, rowId);
+        }
+      });
+    });
+  }
+
   function generateChannelId() {
     channelCounter++;
     return channelCounter;
   }
 
   function generateChannelNumber() {
-    return Math.floor(Math.random() * 900000) + 100000;
+    return Math.floor(Math.random() * 900) + 100;
   }
 
 
@@ -48,12 +171,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   }
 
-  function createTableRow(channelId, channelNumber) {
+  function createTableRow(channelId, channelNumber, randomId = null) {
     const row = document.createElement('tr');
     row.className = 'table__row';
     row.setAttribute('data-id', channelId);
 
-    const randomId = Math.floor(Math.random() * 9000000000) + 1000000000;
+    if (!randomId) {
+      randomId = Math.floor(Math.random() * 9000000000) + 1000000000;
+    }
 
     row.innerHTML = `
       <td class="table__cell" data-label="Название">
@@ -108,6 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const newRow = createTableRow(channelId, channelNumber);
     tableBody.appendChild(newRow);
     
+    saveChannels(); // Сохраняем обновленный список каналов
     closeQRModal();
   }
 
@@ -115,6 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const row = document.querySelector(`.table__row[data-id="${rowId}"]`);
     if (row) {
       row.remove();
+      saveChannels(); // Сохраняем обновленный список каналов
     }
   }
 
@@ -174,6 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Инициализируем обработчики для существующих кнопок (до загрузки данных)
   actionButtons.forEach(button => {
     button.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -238,10 +366,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.addEventListener('click', (e) => {
     if (actionModal.getAttribute('aria-hidden') === 'false') {
-      if (!modalMenu.contains(e.target) && !Array.from(actionButtons).some(btn => btn.contains(e.target))) {
+      const currentActionButtons = tableBody.querySelectorAll('.table__action-btn');
+      if (!modalMenu.contains(e.target) && !Array.from(currentActionButtons).some(btn => btn.contains(e.target))) {
         closeActionModal();
       }
     }
   });
+
+  // Загружаем данные при старте приложения (после всех определений функций)
+  const savedChannels = localStorage.getItem(STORAGE_KEY_CHANNELS);
+  if (savedChannels) {
+    loadChannels();
+  } else {
+    // Если данных нет, извлекаем из HTML и сохраняем (первый запуск)
+    extractChannelsFromHTML();
+  }
 
 });
