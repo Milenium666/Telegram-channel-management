@@ -58,6 +58,10 @@ npm run build
 npm run preview
 ```
 
+## 🔗 Демо
+
+[Демо](https://telegram-channel-management.vercel.app/)
+
 ## 📁 Структура проекта
 
 ```

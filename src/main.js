@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const img = document.createElement('img');
     img.className = 'table__img';
-    img.src = './src/images/menu-dots-vertical.svg';
+    img.src = './menu-dots-vertical.svg';
     img.alt = 'иконка три точки';
 
     button.appendChild(img);
