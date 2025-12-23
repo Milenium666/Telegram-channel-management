@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function loadChannelsFromJSON() {
     try {
-      const response = await fetch('/src/data/channels.json');
+      const response = await fetch('/channels.json');
       if (!response.ok) {
         throw new Error('Failed to load channels.json');
       }
